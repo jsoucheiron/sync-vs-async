@@ -1,0 +1,24 @@
+version: '3'
+services:
+  aiohttp:
+    ports:
+     - 8000:4000
+    build:
+      context: aiohttp-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
+  flask:
+    ports:
+     - 8001:4000
+    build:
+      context: flask-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
+  nginx:
+    ports:
+     - 8080:80
+    build:
+      context: nginx-delay
+      dockerfile: Dockerfile
