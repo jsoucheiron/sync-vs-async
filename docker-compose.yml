@@ -16,6 +16,14 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - nginx
+  express:
+    ports:
+      - 8002:5000
+    build:
+      context: express-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
   nginx:
     ports:
      - 8080:80
