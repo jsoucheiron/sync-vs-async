@@ -1,0 +1,23 @@
+{
+  "name": "express-simple-app",
+  "version": "1.0.0",
+  "description": "Demo app to benchmark performance",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jsoucheiron/sync-vs-async.git"
+  },
+  "author": "Marc Cerrato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jsoucheiron/sync-vs-async/issues"
+  },
+  "homepage": "https://github.com/jsoucheiron/sync-vs-async#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "node-fetch": "^1.7.3"
+  }
+}
