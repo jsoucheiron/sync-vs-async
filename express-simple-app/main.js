@@ -1,7 +1,9 @@
+const cluster = require('cluster');
 const express = require('express');
 const fetch = require('node-fetch');
 
-const app = express();
+const PORT = 5000;
+const NUM_WORKERS = 4;
 
 const ioHandler = (request, response) => {
   const delay = request.query.delay || '';
@@ -17,7 +19,16 @@ const cpuHandler = (request, response) => {
 
 };
 
+const app = express();
 app.get('/io', ioHandler);
 app.get('/cpu', cpuHandler);
 
-app.listen(5000);
+if (cluster.isMaster) {
+  for (let i = 0; i < NUM_WORKERS; i++) {
+    cluster.fork();
+  }
+} else {
+  app.listen(PORT);
+  console.log(`Worker ${process.pid} started`);
+}
+
