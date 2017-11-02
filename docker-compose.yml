@@ -24,6 +24,22 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - nginx
+  tornado:
+    ports:
+      - 8003:5000
+    build:
+      context: tornado-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
+  sanic:
+    ports:
+      - 8004:5000
+    build:
+      context: sanic-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
   nginx:
     ports:
      - 8080:80

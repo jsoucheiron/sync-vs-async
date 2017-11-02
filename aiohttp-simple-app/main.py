@@ -4,6 +4,7 @@ import asyncio
 import uvloop
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
+
 async def io_handler(request: ClientRequest):
     delay = request.query.get('delay', '')
     client = ClientSession(
@@ -15,7 +16,7 @@ async def io_handler(request: ClientRequest):
     return web.Response(text='Request finished!')
 
 
-    async def cpu_handler(request: ClientRequest):
+async def cpu_handler(request: ClientRequest):
     iterations = int(request.query.get('iterations', '0'))
     for _ in range(iterations):
         iterations -= 1

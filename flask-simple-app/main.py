@@ -3,6 +3,7 @@ import requests
 
 app = Flask(__name__)
 
+
 @app.route('/io')
 def io_handler():
     delay = request.args.get('delay', '')
