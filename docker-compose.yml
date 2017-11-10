@@ -1,8 +1,14 @@
 version: '3'
 services:
+  vegeta:
+    volumes:
+      - ./results:/results
+    build:
+      context: vegeta
+      dockerfile: Dockerfile
   aiohttp:
     ports:
-     - 8000:4000
+     - 8000:80
     build:
       context: aiohttp-simple-app
       dockerfile: Dockerfile
@@ -10,7 +16,7 @@ services:
       - nginx
   flask:
     ports:
-     - 8001:4000
+     - 8001:80
     build:
       context: flask-simple-app
       dockerfile: Dockerfile
@@ -18,7 +24,7 @@ services:
       - nginx
   express:
     ports:
-      - 8002:5000
+      - 8002:80
     build:
       context: express-simple-app
       dockerfile: Dockerfile
@@ -26,7 +32,7 @@ services:
       - nginx
   tornado:
     ports:
-      - 8003:5000
+      - 8003:80
     build:
       context: tornado-simple-app
       dockerfile: Dockerfile
@@ -34,7 +40,7 @@ services:
       - nginx
   sanic:
     ports:
-      - 8004:5000
+      - 8004:80
     build:
       context: sanic-simple-app
       dockerfile: Dockerfile

@@ -29,4 +29,4 @@ app.router.add_route('GET', '/cpu', cpu_handler)
 
 
 if __name__ == '__main__':
-    web.run_app(app, host='0.0.0.0', port=4000)
+    web.run_app(app, host='0.0.0.0', port=80)

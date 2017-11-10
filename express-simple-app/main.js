@@ -2,7 +2,7 @@ const cluster = require('cluster');
 const express = require('express');
 const fetch = require('node-fetch');
 
-const PORT = 5000;
+const PORT = 80;
 const NUM_WORKERS = 4;
 
 const ioHandler = (request, response) => {

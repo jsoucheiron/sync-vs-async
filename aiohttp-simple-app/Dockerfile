@@ -6,6 +6,6 @@ RUN pip install -r requirements.txt --no-cache-dir
 
 COPY . .
 
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:4000", "main:app", \
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:80", "main:app", \
      "--worker-class", "aiohttp.worker.GunicornWebWorker"]
 

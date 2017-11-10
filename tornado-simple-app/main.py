@@ -32,7 +32,7 @@ def make_app():
 def run():
     AsyncHTTPClient.configure("tornado.curl_httpclient.CurlAsyncHTTPClient")
     http_server = HTTPServer(make_app())
-    http_server.bind(5000)
+    http_server.bind(80)
     http_server.start(0)
     IOLoop.current().start()
 
