@@ -8,6 +8,7 @@ SERVERS = [
     'aiohttp',
     'express',
     'flask',
+    'go-stdlib',
     'sanic',
     'tornado'
 ]

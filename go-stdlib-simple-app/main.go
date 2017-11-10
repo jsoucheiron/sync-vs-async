@@ -15,7 +15,7 @@ var host, port string
 
 func main() {
 	flag.StringVar(&host, "host", "", "Host to serve")
-	flag.StringVar(&port, "port", "8080", "Port to listen into")
+	flag.StringVar(&port, "port", "80", "Port to listen into")
 	flag.Parse()
 
 	http.HandleFunc("/", mainHandler)

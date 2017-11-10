@@ -48,7 +48,7 @@ services:
       - nginx
   go-stdlib:
     ports:
-      - 8005:8080
+      - 8005:80
     build:
       context: go-stdlib-simple-app
       dockerfile: Dockerfile

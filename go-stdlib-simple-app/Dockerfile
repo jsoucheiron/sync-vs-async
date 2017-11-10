@@ -13,5 +13,5 @@ RUN go install github.com/jsoucheiron/sync-vs-async/go-stdlib-simple-app
 # Run the outyet command by default when the container starts.
 ENTRYPOINT /go/bin/go-stdlib-simple-app
 
-# Document that the service listens on port 8080.
-EXPOSE 8080
+# Document that the service listens on port 80.
+EXPOSE 80
