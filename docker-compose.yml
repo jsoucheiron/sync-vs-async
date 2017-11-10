@@ -40,6 +40,14 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - nginx
+  go-stdlib:
+    ports:
+      - 8005:8080
+    build:
+      context: go-stdlib-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
   nginx:
     ports:
      - 8080:80
