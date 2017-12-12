@@ -6,6 +6,12 @@ services:
     build:
       context: vegeta
       dockerfile: Dockerfile
+  wrk2:
+    volumes:
+      - ./results:/results
+    build:
+      context: wrk2
+      dockerfile: Dockerfile
   aiohttp:
     ports:
      - 8000:80
@@ -51,6 +57,22 @@ services:
       - 8005:80
     build:
       context: go-stdlib-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
+  php:
+    ports:
+      - 8006:80
+    build:
+      context: php-simple-app
+      dockerfile: Dockerfile
+    depends_on:
+      - nginx
+  dropwizard:
+    ports:
+      - 8007:80
+    build:
+      context: dropwizard-simple-app
       dockerfile: Dockerfile
     depends_on:
       - nginx

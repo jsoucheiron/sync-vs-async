@@ -6,5 +6,3 @@ ADD https://github.com/tsenart/vegeta/releases/download/v${VEGETA_VERSION}/veget
 RUN cd /bin && tar -zxvf /tmp/vegeta.tar.gz && chmod +x /bin/vegeta && rm /tmp/vegeta.tar.gz
 
 COPY test.sh /test.sh
-
-CMD [ "test.sh" ]
