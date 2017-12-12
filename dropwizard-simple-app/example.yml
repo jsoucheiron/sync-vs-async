@@ -1,0 +1,30 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 80
+    - type: https
+      port: 8443
+      keyStorePath: example.keystore
+      keyStorePassword: example
+  adminConnectors:
+    - type: http
+      port: 8081
+    - type: https
+      port: 8444
+      keyStorePath: example.keystore
+      keyStorePassword: example
+
+# Logging settings.
+logging:
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: ERROR
+
+httpClient:
+  timeout: 1500ms
+  connectionTimeout: 1500ms
+  timeToLive: 1h
+  cookiesEnabled: false
+  maxConnections: 1024
+  maxConnectionsPerRoute: 1024
+  keepAlive: 0ms
+  retries: 0
