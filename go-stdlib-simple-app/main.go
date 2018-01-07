@@ -45,11 +45,17 @@ func mainHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// ioHandler receives requests to path of the form '/io/100ms' and
+// ioHandler receives requests to path of the form '/io?delay=100ms' and
 // redirects the request to nginx host
 func ioHandler(w http.ResponseWriter, r *http.Request) {
-	// Remove leading '/'
-	delay := r.URL.Path[1:]
+	// Read query parameter
+	query := r.URL.Query()
+	v, ok := query["delay"]
+	if !ok {
+		fmt.Fprintf(w, "Bad Params")
+		return
+	}
+	delay := v[0]
 	// Time and log handler execution
 	defer startTimer(fmt.Sprintf("iohandler request with delay %s", delay))()
 
@@ -79,20 +85,26 @@ func ioHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Request finished!")
 }
 
-// cpuHandler receives requests to path of the form '/cpu/8' and loops
+// cpuHandler receives requests to path of the form '/cpu?iterations=8' and loops
 // that many times before returning
 func cpuHandler(w http.ResponseWriter, r *http.Request) {
-	// Remove leading '/'
-	param := r.URL.Path[1:]
+	// Read query parameter
+	query := r.URL.Query()
+	v, ok := query["iterations"]
+	if !ok {
+		fmt.Fprintf(w, "Bad Params")
+		return
+	}
+	param := v[0]
 	// Time and log handler execution
 	defer startTimer(fmt.Sprintf("cpuhandler with iterations %s", param))()
 
 	// Cast parameter to integer
-	iterations, err := strconv.Atoi(param[1:])
+	iterations, err := strconv.Atoi(param)
 	if err != nil {
 		// Cast failed
 		http.Error(w, "Bad Request", http.StatusBadRequest)
-		log.Printf("Failed to parse '%s' as integer\n", param[1:])
+		log.Printf("Failed to parse '%s' as integer\n", param)
 		return
 	}
 
